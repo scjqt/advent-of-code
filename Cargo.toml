@@ -1,0 +1,11 @@
+[package]
+name = "advent_of_code"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+itertools = "0.10.1"
+regex = "1.5.4"
+array2d = { git = "https://github.com/scjqt/array2d" }
+search = { git = "https://github.com/scjqt/search" }
+macros = { path = "macros" }
