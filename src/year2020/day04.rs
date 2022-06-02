@@ -6,18 +6,17 @@ pub fn part1(input: &[String]) {
 
 pub fn part2(input: &[String]) {
     let rules = Rules::init();
-    let mut passports = get_passports(input);
-    passports.retain(|x| x.valid(&rules));
-    println!("{}", passports.len());
+    let valid = get_passports(input).into_iter().filter(|p| p.valid(&rules));
+    println!("{}", valid.count());
 }
 
 fn get_passports(input: &[String]) -> Vec<Passport> {
     let mut passports = Vec::new();
     let mut current = Passport::default();
     for line in input {
-        if line.len() == 0 {
+        if line.is_empty() {
             if current.count == 7 {
-                passports.push(current.clone());
+                passports.push(current);
             }
             current = Passport::default();
         } else {
