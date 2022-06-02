@@ -39,7 +39,7 @@ fn get_passports(input: &[String]) -> Vec<Passport> {
         }
     }
     if current.count == 7 {
-        passports.push(current.clone());
+        passports.push(current);
     }
     passports
 }
