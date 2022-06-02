@@ -1,13 +1,13 @@
 use std::collections::HashSet;
 
 pub fn part1(input: &[String]) {
-    if let Some(product) = find_pair(&translate_input(input), 2020) {
+    if let Some(product) = find_pair(&parse(input), 2020) {
         println!("{}", product);
     }
 }
 
 pub fn part2(input: &[String]) {
-    let values = translate_input(input);
+    let values = parse(input);
     for (i, &value) in values.iter().enumerate() {
         if let Some(product) = find_pair(&values[i + 1..], 2020 - value) {
             println!("{}", product * value);
@@ -16,7 +16,7 @@ pub fn part2(input: &[String]) {
     }
 }
 
-fn translate_input(input: &[String]) -> Vec<i32> {
+fn parse(input: &[String]) -> Vec<i32> {
     input.iter().map(|x| x.parse().unwrap()).collect()
 }
 

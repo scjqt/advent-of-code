@@ -4,11 +4,11 @@ pub fn part1(input: &[String]) {
     let mut total = 0;
     let mut group = HashSet::new();
     for line in input {
-        if line.len() == 0 {
+        if line.is_empty() {
             total += group.len();
             group.clear();
         } else {
-            group = group.union(&to_set(line)).copied().collect();
+            group = group.union(&parse(line)).copied().collect();
         }
     }
     total += group.len();
@@ -20,15 +20,15 @@ pub fn part2(input: &[String]) {
     let mut group = HashSet::new();
     let mut new = true;
     for line in input {
-        if line.len() == 0 {
+        if line.is_empty() {
             total += group.len();
             group.clear();
             new = true;
         } else {
             group = if new {
-                to_set(line)
+                parse(line)
             } else {
-                group.intersection(&to_set(line)).copied().collect()
+                group.intersection(&parse(line)).copied().collect()
             };
             new = false;
         }
@@ -37,6 +37,6 @@ pub fn part2(input: &[String]) {
     println!("{}", total);
 }
 
-fn to_set(line: &str) -> HashSet<char> {
+fn parse(line: &str) -> HashSet<char> {
     line.chars().collect::<HashSet<_>>()
 }

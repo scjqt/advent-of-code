@@ -5,24 +5,22 @@ pub fn part1(input: &[String]) {
 }
 
 pub fn part2(input: &[String]) {
-    let map = parse(input);
-    println!(
-        "{}",
-        encounters(&map, 1, 1)
-            * encounters(&map, 3, 1)
-            * encounters(&map, 5, 1)
-            * encounters(&map, 7, 1)
-            * encounters(&map, 1, 2)
-    )
+    let map = &parse(input);
+    let encounters = encounters(map, 1, 1)
+        * encounters(map, 3, 1)
+        * encounters(map, 5, 1)
+        * encounters(map, 7, 1)
+        * encounters(map, 1, 2);
+    println!("{}", encounters);
 }
 
-fn encounters(map: &Array2D<bool>, offx: usize, offy: usize) -> i64 {
+fn encounters(map: &Array2D<bool>, dx: usize, dy: usize) -> i64 {
     let (mut x, mut y) = (0, 0);
     let mut total = 0;
     while y < map.height() {
         total += if map[[x, y]] { 1 } else { 0 };
-        x = (x + offx) % map.width();
-        y += offy;
+        x = (x + dx) % map.width();
+        y += dy;
     }
     total
 }
@@ -32,10 +30,7 @@ fn parse(input: &[String]) -> Array2D<bool> {
     let mut pos_iter = arr.positions();
     for line in input {
         for tile in line.chars() {
-            let pos = pos_iter.next().unwrap();
-            if tile == '#' {
-                arr[pos] = true;
-            }
+            arr[pos_iter.next().unwrap()] = tile == '#';
         }
     }
     arr
