@@ -3,13 +3,8 @@ pub fn part1(input: &[String]) {
 }
 
 pub fn part2(input: &[String]) {
-    println!(
-        "{}",
-        input
-            .iter()
-            .map(|x| evaluate(&fix_precedence(x)))
-            .sum::<u64>()
-    );
+    let sum: u64 = input.iter().map(|x| evaluate(&fix_precedence(x))).sum();
+    println!("{}", sum);
 }
 
 fn evaluate(expression: &str) -> u64 {
