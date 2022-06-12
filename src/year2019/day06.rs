@@ -13,10 +13,8 @@ pub fn part2(input: &[String]) {
     let orbits = orbits(input);
     let you = full_path(&orbits, orbits["YOU"]);
     let san = full_path(&orbits, orbits["SAN"]);
-    println!(
-        "{}",
-        you.len() + san.len() - you.intersection(&san).collect::<HashSet<_>>().len() * 2
-    );
+    let min = you.len() + san.len() - you.intersection(&san).collect::<HashSet<_>>().len() * 2;
+    println!("{}", min);
 }
 
 fn total_orbits(orbits: &HashMap<&str, &str>, object: &str) -> usize {

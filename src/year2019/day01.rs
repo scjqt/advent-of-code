@@ -1,11 +1,9 @@
 pub fn part1(input: &[String]) {
-    println!(
-        "{}",
-        input
-            .iter()
-            .map(|mass| mass.parse::<i32>().unwrap() / 3 - 2)
-            .sum::<i32>()
-    );
+    let sum = input
+        .iter()
+        .map(|mass| mass.parse::<i32>().unwrap() / 3 - 2)
+        .sum::<i32>();
+    println!("{}", sum);
 }
 
 pub fn part2(input: &[String]) {

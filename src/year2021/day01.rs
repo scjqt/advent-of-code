@@ -3,15 +3,13 @@ pub fn part1(input: &[String]) {
 }
 
 pub fn part2(input: &[String]) {
-    println!(
-        "{}",
-        total(
-            parse(input)
-                .windows(3)
-                .map(|depths| depths.iter().sum())
-                .collect()
-        )
+    let total = total(
+        parse(input)
+            .windows(3)
+            .map(|depths| depths.iter().sum())
+            .collect(),
     );
+    println!("{}", total);
 }
 
 fn parse(input: &[String]) -> Vec<u16> {
