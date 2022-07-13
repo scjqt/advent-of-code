@@ -1,6 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     let orbits = orbits(input);
     let mut total = 0;
     for object in orbits.keys() {
@@ -9,7 +9,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     total
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let orbits = orbits(input);
     let you = full_path(&orbits, orbits["YOU"]);
     let san = full_path(&orbits, orbits["SAN"]);

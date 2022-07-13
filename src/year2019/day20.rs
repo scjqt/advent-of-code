@@ -3,7 +3,7 @@ use search::bft;
 use std::collections::HashMap;
 const OFFSETS: [(isize, isize); 4] = [(1, 0), (0, -1), (-1, 0), (0, 1)];
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u16 {
     let (maze, portals, start, end) = parse(input);
     let goal = bft(
         State::start(start),
@@ -28,7 +28,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     goal.steps
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u16 {
     let (maze, portals, start, end) = parse(input);
     let goal = bft(
         State::start(start),

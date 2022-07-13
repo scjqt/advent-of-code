@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let mut fewest = usize::MAX;
     let mut result = 0;
     for i in 0..input[0].len() / (25 * 6) {
@@ -19,7 +19,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     result
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> String {
     let mut image = Vec::new();
     image.resize_with(25 * 6, || '2');
     for i in 0..input[0].len() / (25 * 6) {

@@ -1,11 +1,11 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let y = Area::new(input).y.0.abs();
     y * (y - 1) / 2
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let area = Area::new(input);
     let mut velocities = HashSet::new();
 

@@ -1,17 +1,16 @@
 use array2d::Array2D;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i64 {
     encounters(&parse(input), 3, 1)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i64 {
     let map = &parse(input);
-    let encounters = encounters(map, 1, 1)
+    encounters(map, 1, 1)
         * encounters(map, 3, 1)
         * encounters(map, 5, 1)
         * encounters(map, 7, 1)
-        * encounters(map, 1, 2);
-    encounters
+        * encounters(map, 1, 2)
 }
 
 fn encounters(map: &Array2D<bool>, dx: usize, dy: usize) -> i64 {

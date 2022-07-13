@@ -1,6 +1,6 @@
 use life::Life;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     let mut life = Life::new(input);
     for _ in 0..6 {
         life.update(false);
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     life.active()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let mut life = Life::new(input);
     for _ in 0..6 {
         life.update(true);

@@ -1,8 +1,8 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     input.iter().map(seat_id).max().unwrap()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let mut occupied = vec![false; 1 << 10];
     for seat in input {
         occupied[seat_id(seat)] = true;

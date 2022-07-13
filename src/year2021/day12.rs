@@ -1,10 +1,10 @@
 use map::Map;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u32 {
     Map::new(input).count(false)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u32 {
     Map::new(input).count(true)
 }
 

@@ -1,8 +1,8 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     shuffle(input, 10007).apply(2019, 10007)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     const N: u64 = 119315717514047;
     power(shuffle(input, N), 101741582076661, N)
         .inv(N)

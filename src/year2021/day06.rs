@@ -1,10 +1,10 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     simulate(input, 80)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     simulate(input, 256)
 }
 

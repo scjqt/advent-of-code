@@ -1,15 +1,15 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     let (foods, _, potential) = parse(input);
 
     foods
         .iter()
         .map(|food| food.difference(&potential).collect::<HashSet<_>>().len())
-        .sum::<usize>()
+        .sum()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> String {
     let mut allergens = parse(input).1;
     let mut dangerous: Vec<(String, String)> = Vec::new();
     while allergens.len() > 0 {

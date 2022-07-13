@@ -1,6 +1,6 @@
 use array2d::Array2D;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     let mut image = Image::new(input, 4);
     for _ in 0..2 {
         image.enhance();
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     image.count()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let mut image = Image::new(input, 100);
     for _ in 0..50 {
         image.enhance();

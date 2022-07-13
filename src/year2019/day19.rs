@@ -1,6 +1,6 @@
 use super::intcode;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     let mut total = 0;
@@ -14,7 +14,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     total
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i64 {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     let mut start_x = 0;

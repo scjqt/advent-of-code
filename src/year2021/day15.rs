@@ -1,11 +1,11 @@
 use array2d::Array2D;
 use search::dijkstra;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u16 {
     lowest_total_risk(parse(input))
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u16 {
     let levels = parse(input);
     lowest_total_risk(Array2D::from_fn(
         levels.width() * 5,

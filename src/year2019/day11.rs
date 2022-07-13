@@ -1,11 +1,11 @@
 use super::intcode;
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     paint_hull(0, &input[0]).len()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> String {
     let hull = paint_hull(1, &input[0]);
     let (mut min_x, mut min_y, mut max_x, mut max_y) = (0, 0, 0, 0);
     for (&(x, y), &colour) in hull.iter() {

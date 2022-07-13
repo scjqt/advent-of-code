@@ -1,6 +1,6 @@
 use array2d::Array2D;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let mut map = parse(input);
     let mut count = 0;
     let mut updated = true;

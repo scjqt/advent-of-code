@@ -1,6 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     let mut bags: HashMap<String, Vec<String>> = HashMap::new();
     for line in input {
         let (parent, children) = parse(line);
@@ -15,7 +15,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     contained.len() - 1
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u32 {
     let mut bags: HashMap<String, Vec<FreqPair>> = HashMap::new();
     for line in input {
         let (parent, children) = parse(line);

@@ -1,10 +1,10 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     target(input)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     let target = target(input);
     let numbers: Vec<u64> = input.iter().map(|x| x.parse().unwrap()).collect();
     for start in 0..numbers.len() - 1 {

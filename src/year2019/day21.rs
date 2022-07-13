@@ -1,11 +1,11 @@
 use super::intcode;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i64 {
     let instructions = ["OR D J", "OR A T", "AND C T", "NOT T T", "AND T J", "WALK"];
     springbot(input, &instructions)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i64 {
     let instructions = [
         "OR E J", "OR H J", "AND D J", "OR A T", "AND C T", "AND B T", "NOT T T", "AND T J", "RUN",
     ];

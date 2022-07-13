@@ -1,11 +1,11 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     input
         .iter()
         .map(|mass| mass.parse::<i32>().unwrap() / 3 - 2)
-        .sum::<i32>()
+        .sum()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let mut total = 0;
     for mut mass in input.iter().map(|m| m.parse::<i32>().unwrap()) {
         while mass > 0 {

@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     let mut error_score = 0;
 
     for line in input {
@@ -21,7 +21,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     error_score
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     let mut completion_scores = Vec::new();
 
     'outer: for line in input {

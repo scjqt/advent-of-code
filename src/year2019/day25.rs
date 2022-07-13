@@ -1,7 +1,7 @@
 use super::intcode;
 use std::io;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> &'static str {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     while computer.state() != intcode::State::Halted {

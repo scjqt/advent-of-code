@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let (mut position, mut depth) = (0, 0);
     for (direction, distance) in parse(input).into_iter() {
         match direction {
@@ -11,7 +11,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     position * depth
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let (mut position, mut depth, mut aim) = (0, 0, 0);
     for (direction, distance) in parse(input).into_iter() {
         match direction {

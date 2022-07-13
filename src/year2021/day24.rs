@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> String {
     let relationships = relationships(input);
     let mut number = [0; 14];
     for (i, j, o) in relationships {
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     to_string(number)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> String {
     let relationships = relationships(input);
     let mut number = [0; 14];
     for (i, j, o) in relationships {

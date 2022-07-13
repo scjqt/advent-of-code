@@ -1,12 +1,12 @@
 use asteroids::{Asteroid, AsteroidOrd};
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     let map = parse_input(input);
     best(&map).0
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let mut map = parse_input(input);
     let station = best(&map).1;
     map.remove(map.iter().position(|&x| x == station).unwrap());

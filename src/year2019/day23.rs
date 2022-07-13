@@ -1,7 +1,7 @@
 use super::intcode;
 use std::collections::{HashSet, VecDeque};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i64 {
     let mut network = Network::new(input);
     while network.nat == (-1, 0) {
         network.update();
@@ -9,7 +9,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     network.nat.1
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i64 {
     let mut network = Network::new(input);
     let mut history = HashSet::new();
     loop {

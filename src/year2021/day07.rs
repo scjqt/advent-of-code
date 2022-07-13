@@ -1,10 +1,10 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u32 {
     let mut crabs: Vec<u32> = parse(input);
     crabs.sort_unstable();
     fuel_one(&crabs, crabs[(crabs.len() - 1) / 2])
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u32 {
     let crabs: Vec<u32> = parse(input);
     let (mut low, mut high) = (*crabs.iter().min().unwrap(), *crabs.iter().max().unwrap());
     loop {

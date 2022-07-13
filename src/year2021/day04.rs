@@ -1,6 +1,6 @@
 use board::Board;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u32 {
     let (numbers, mut boards) = parse(input);
     for &number in &numbers {
         for board in boards.iter_mut() {
@@ -12,7 +12,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     panic!()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u32 {
     let (numbers, mut boards) = parse(input);
     let mut last = 0;
     for &number in &numbers {

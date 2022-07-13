@@ -1,10 +1,10 @@
 use std::{collections::HashMap, str::Split};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     solve(input, false)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     solve(input, true)
 }
 

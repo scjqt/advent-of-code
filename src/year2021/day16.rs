@@ -1,10 +1,10 @@
 use packets::Packet;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     Packet::new(input).total_version()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     Packet::new(input).evaluate()
 }
 

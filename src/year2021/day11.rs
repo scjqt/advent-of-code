@@ -1,6 +1,6 @@
 use array2d::Array2D;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u16 {
     let mut cave = Cave::new(input);
     for _ in 0..100 {
         cave.step();
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     cave.total_flashes
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u16 {
     let mut cave = Cave::new(input);
     while cave.step_flashes != 100 {
         cave.step();

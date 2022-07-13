@@ -1,6 +1,6 @@
 use std::collections::{HashSet, VecDeque};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let (mut player1, mut player2) = decks(input);
     while player1.len() * player2.len() > 0 {
         let (one, two) = (player1.pop_front().unwrap(), player2.pop_front().unwrap());
@@ -15,7 +15,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     score(if player1.len() == 0 { player2 } else { player1 })
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let (player1, player2) = decks(input);
     i32::abs(play(player1, player2))
 }

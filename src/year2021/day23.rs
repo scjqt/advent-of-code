@@ -1,7 +1,7 @@
 use search::dijkstra;
 use Colour::*;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u32 {
     let (one, two) = parse(input);
     lowest_energy([
         [A, A, two[0], one[0]],
@@ -11,7 +11,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     ])
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u32 {
     let (one, four) = parse(input);
     lowest_energy([
         [four[0], D, D, one[0]],

@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     input
         .iter()
         .map(|line| {
@@ -12,10 +12,10 @@ pub fn part1(input: &[String]) -> impl ToString {
                 .filter(|&c| c != 5 && c != 6)
                 .count()
         })
-        .sum::<usize>()
+        .sum()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u32 {
     let mut lookup: HashMap<u8, &str> = HashMap::new();
     lookup.insert(0b1110111, "0");
     lookup.insert(0b0010010, "1");

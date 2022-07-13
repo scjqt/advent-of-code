@@ -1,13 +1,15 @@
 use regex::Regex;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     get_passports(input).len()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let rules = Rules::init();
-    let valid = get_passports(input).into_iter().filter(|p| p.valid(&rules));
-    valid.count()
+    get_passports(input)
+        .into_iter()
+        .filter(|p| p.valid(&rules))
+        .count()
 }
 
 fn get_passports(input: &[String]) -> Vec<Passport> {

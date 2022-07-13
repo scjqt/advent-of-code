@@ -1,7 +1,7 @@
 use array2d::Array2D;
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     let (tiles, _, minx, miny) = parse(input);
     let mut total = 1;
     for tiley in 0..12 {
@@ -17,7 +17,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     total
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let (tiles, raw, minx, miny) = parse(input);
     let mut image = Array2D::new(96, 96, false);
     for tiley in 0..12 {

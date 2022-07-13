@@ -1,6 +1,6 @@
 use game::Game;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> String {
     let mut game = Game::new(
         input[0]
             .chars()
@@ -13,7 +13,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     game.result_one()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let mut values: Vec<usize> = input[0]
         .chars()
         .map(|x| x.to_string().parse().unwrap())

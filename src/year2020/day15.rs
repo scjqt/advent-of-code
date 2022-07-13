@@ -1,13 +1,11 @@
 use memory_game::Game;
 
-pub fn part1(input: &[String]) -> impl ToString {
-    let mut game = Game::new(input[0].split(',').map(|x| x.parse().unwrap()).collect());
-    game.update_until(2020)
+pub fn part1(input: &[String]) -> u32 {
+    Game::new(input[0].split(',').map(|x| x.parse().unwrap()).collect()).update_until(2020)
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
-    let mut game = Game::new(input[0].split(',').map(|x| x.parse().unwrap()).collect());
-    game.update_until(30000000)
+pub fn part2(input: &[String]) -> u32 {
+    Game::new(input[0].split(',').map(|x| x.parse().unwrap()).collect()).update_until(30000000)
 }
 
 mod memory_game {

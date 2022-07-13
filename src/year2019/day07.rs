@@ -1,7 +1,7 @@
 use super::intcode;
 use itertools::Itertools;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i64 {
     let computer = intcode::Computer::new(&input[0]).unwrap();
     let mut largest = 0;
     for permutation in (0..5).permutations(5) {
@@ -21,7 +21,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     largest
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i64 {
     let computer = intcode::Computer::new(&input[0]).unwrap();
     let mut largest = 0;
     for permutation in (5..10).permutations(5) {

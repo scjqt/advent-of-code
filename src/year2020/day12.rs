@@ -1,13 +1,13 @@
 use ship::Ship;
 use Instruction::*;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let mut ship = Ship::new(1, 0);
     input.iter().for_each(|x| ship.update(from_string(x)));
     ship.manhattan()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let mut ship = Ship::new(10, 1);
     input
         .iter()

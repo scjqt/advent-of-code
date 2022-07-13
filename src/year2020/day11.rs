@@ -1,12 +1,12 @@
 use waiting_area::WaitingArea;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u16 {
     let mut state = WaitingArea::new(input);
     while state.update_part_one() {}
     state.occupied()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u16 {
     let mut state = WaitingArea::new(input);
     while state.update_part_two() {}
     state.occupied()

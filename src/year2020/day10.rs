@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let numbers = interpret(input);
     let mut ones = 0;
     let mut threes = 0;
@@ -12,7 +12,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     ones * threes
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     let numbers = interpret(input);
     let mut total: u64 = 1;
     let mut consecutive = 1;

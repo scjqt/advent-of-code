@@ -1,7 +1,7 @@
 use std::collections::{HashMap, HashSet};
 const OFFSETS: [(i8, i8); 4] = [(1, 0), (0, -1), (-1, 0), (0, 1)];
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u32 {
     let mut bugs = parse(input);
     let mut rating = biodiversity(&bugs);
     let mut history = HashSet::new();
@@ -13,7 +13,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     rating
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let mut bugs = parse(input);
     for _ in 0..200 {
         bugs = update(bugs, level_adj);

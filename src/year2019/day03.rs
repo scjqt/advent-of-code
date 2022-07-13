@@ -1,6 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let mut closest = i32::MAX;
     for intersection in set(&wire(&input[0]))
         .intersection(&set(&wire(&input[1])))
@@ -13,7 +13,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     closest
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> usize {
     let wires = (wire(&input[0]), wire(&input[1]));
     let mut closest = usize::MAX;
     for intersection in set(&wires.0)

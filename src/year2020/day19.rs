@@ -1,7 +1,7 @@
 use regex::Regex;
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let mut i = 0;
     let mut rules = read_rules(input, &mut i);
     let valid = Regex::new(&format!("^{}$", resolve_rule(&mut rules, 0))).unwrap();
@@ -12,7 +12,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     total
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let mut i = 0;
     let mut rules = read_rules(input, &mut i);
     rules.insert(

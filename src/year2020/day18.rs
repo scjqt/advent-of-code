@@ -1,9 +1,9 @@
-pub fn part1(input: &[String]) -> impl ToString {
-    input.iter().map(eval_one).sum::<u64>()
+pub fn part1(input: &[String]) -> u64 {
+    input.iter().map(eval_one).sum()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
-    input.iter().map(eval_two).sum::<u64>()
+pub fn part2(input: &[String]) -> u64 {
+    input.iter().map(eval_two).sum()
 }
 
 fn eval_one(expr: &String) -> u64 {

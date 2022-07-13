@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i64 {
     let inner = Cuboid {
         bounds: [(-50, 50); 3],
     };
@@ -12,7 +12,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     grid.volume()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i64 {
     let mut grid = Grid::new();
     for line in input {
         let (is_on, cuboid) = parse(line);

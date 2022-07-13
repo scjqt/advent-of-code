@@ -1,8 +1,8 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u16 {
     total(parse(input))
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u16 {
     total(
         parse(input)
             .windows(3)

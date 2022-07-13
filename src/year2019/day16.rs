@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> String {
     let mut list = input[0]
         .chars()
         .map(|c| c.to_digit(10).unwrap() as u8)
@@ -6,10 +6,10 @@ pub fn part1(input: &[String]) -> impl ToString {
     for _ in 0..100 {
         list = phase_full(list);
     }
-    list[..8].iter().map(|d| d.to_string()).collect::<String>()
+    list[..8].iter().map(|d| d.to_string()).collect()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> String {
     let mut list: Vec<u8> = input[0]
         .chars()
         .map(|c| c.to_digit(10).unwrap() as u8)
@@ -28,11 +28,7 @@ pub fn part2(input: &[String]) -> impl ToString {
     for _ in 0..100 {
         list = phase(list);
     }
-    list.iter()
-        .rev()
-        .take(8)
-        .map(|d| d.to_string())
-        .collect::<String>()
+    list.iter().rev().take(8).map(|d| d.to_string()).collect()
 }
 
 fn phase_full(list: Vec<u8>) -> Vec<u8> {

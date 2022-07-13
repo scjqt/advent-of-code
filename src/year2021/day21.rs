@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u32 {
     let mut one = DeterministicPlayer::new(&input[0], 6);
     let mut two = DeterministicPlayer::new(&input[1], 5);
     let mut rolls = 0;
@@ -19,7 +19,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     result
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     let one = Player::new(&input[0]);
     let two = Player::new(&input[1]);
     let mut success_one = HashMap::new();

@@ -1,10 +1,10 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     collect(correlate_scanners(input).0).len()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let positions = correlate_scanners(input).1;
     let mut largest = 0;
     for &(x1, y1, z1) in &positions {

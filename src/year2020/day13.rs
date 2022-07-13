@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u32 {
     let timestamp: u32 = input[0].parse().unwrap();
     let mut lowest = 100;
     let mut id = 0;
@@ -16,7 +16,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     id * lowest
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     let values: Vec<(u16, usize)> = input[1]
         .split(',')
         .enumerate()

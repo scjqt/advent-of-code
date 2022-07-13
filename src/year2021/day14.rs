@@ -1,6 +1,6 @@
 use polymer::Polymer;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     let mut polymer = Polymer::new(input);
     for _ in 0..10 {
         polymer.step();
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     polymer.result()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u64 {
     let mut polymer = Polymer::new(input);
     for _ in 0..40 {
         polymer.step();

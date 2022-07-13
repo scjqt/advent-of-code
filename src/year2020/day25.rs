@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u64 {
     let subject: u64 = input[0].parse().unwrap();
     let mut n = 1;
     for _ in 0..loop_size(input[1].parse().unwrap()) {

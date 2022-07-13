@@ -1,6 +1,6 @@
 use snailfish::Number;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> u16 {
     let mut number = Number::new(&input[0]);
     for n in input.iter().skip(1) {
         number = number + Number::new(n);
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     number.magnitude()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> u16 {
     let numbers: Vec<_> = input.iter().map(|line| Number::new(line)).collect();
     let mut largest = 0;
     for i in 0..numbers.len() {

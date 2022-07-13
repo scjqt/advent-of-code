@@ -1,14 +1,14 @@
 use state::State;
 use Instruction::*;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> i32 {
     let instructions: Vec<Instruction> = input.iter().map(|x| interpret(&x)).collect();
     let mut state = State::new();
     state.advance_until_end(&instructions, -1);
     state.accumulator()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> i32 {
     let instructions: Vec<Instruction> = input.iter().map(|x| interpret(&x)).collect();
     for i in 0..instructions.len() {
         if let Jmp(_) | Nop(_) = instructions[i] {

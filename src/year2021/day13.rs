@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) -> impl ToString {
+pub fn part1(input: &[String]) -> usize {
     let mut i = 0;
     let mut dots = parse(input, &mut i);
     i += 1;
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) -> impl ToString {
     dots.len()
 }
 
-pub fn part2(input: &[String]) -> impl ToString {
+pub fn part2(input: &[String]) -> String {
     let mut i = 0;
     let mut dots = parse(input, &mut i);
     i += 1;
