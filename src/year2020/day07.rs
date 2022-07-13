@@ -1,6 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut bags: HashMap<String, Vec<String>> = HashMap::new();
     for line in input {
         let (parent, children) = parse(line);
@@ -12,10 +12,10 @@ pub fn part1(input: &[String]) {
     }
     let mut contained = HashSet::new();
     traverse1(&bags, &mut contained, "shiny gold");
-    println!("{}", contained.len() - 1);
+    contained.len() - 1
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut bags: HashMap<String, Vec<FreqPair>> = HashMap::new();
     for line in input {
         let (parent, children) = parse(line);
@@ -23,7 +23,7 @@ pub fn part2(input: &[String]) {
     }
     let mut contains = HashMap::new();
     traverse2(&bags, &mut contains, "shiny gold");
-    println!("{}", contains.get("shiny gold").unwrap());
+    contains.get("shiny gold").unwrap().clone()
 }
 
 fn traverse1(graph: &HashMap<String, Vec<String>>, visited: &mut HashSet<String>, node: &str) {

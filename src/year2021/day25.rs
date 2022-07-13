@@ -1,6 +1,6 @@
 use array2d::Array2D;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut map = parse(input);
     let mut count = 0;
     let mut updated = true;
@@ -8,7 +8,7 @@ pub fn part1(input: &[String]) {
         (map, updated) = step(map);
         count += 1;
     }
-    println!("{}", count);
+    count
 }
 
 fn step(map: Array2D<Cucumber>) -> (Array2D<Cucumber>, bool) {

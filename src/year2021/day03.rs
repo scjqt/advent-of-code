@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut frequencies = Vec::new();
     frequencies.resize(input[0].len(), 0);
     for number in input {
@@ -11,10 +11,10 @@ pub fn part1(input: &[String]) {
     let gamma = frequencies
         .iter()
         .fold(0, |acc, &freq| (acc << 1) + if freq > 0 { 1 } else { 0 });
-    println!("{}", gamma * ((1 << frequencies.len()) - gamma - 1));
+    gamma * ((1 << frequencies.len()) - gamma - 1)
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let len = input[0].len() as u16;
     let numbers: HashSet<u16> = input
         .iter()
@@ -24,10 +24,8 @@ pub fn part2(input: &[String]) {
             })
         })
         .collect();
-    println!(
-        "{}",
-        purge(numbers.clone(), len, false) as u32 * purge(numbers, len, true) as u32
-    );
+
+    purge(numbers.clone(), len, false) as u32 * purge(numbers, len, true) as u32
 }
 
 fn purge(mut numbers: HashSet<u16>, len: u16, mode: bool) -> u16 {

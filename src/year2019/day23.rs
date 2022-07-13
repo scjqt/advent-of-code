@@ -1,22 +1,21 @@
 use super::intcode;
 use std::collections::{HashSet, VecDeque};
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut network = Network::new(input);
     while network.nat == (-1, 0) {
         network.update();
     }
-    println!("{}", network.nat.1);
+    network.nat.1
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut network = Network::new(input);
     let mut history = HashSet::new();
     loop {
         if let Some(nat) = network.update() {
             if history.contains(&nat.1) {
-                println!("{}", nat.1);
-                break;
+                return nat.1;
             }
             history.insert(nat.1);
         }

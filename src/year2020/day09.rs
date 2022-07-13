@@ -1,10 +1,10 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) {
-    println!("{}", target(input));
+pub fn part1(input: &[String]) -> impl ToString {
+    target(input)
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let target = target(input);
     let numbers: Vec<u64> = input.iter().map(|x| x.parse().unwrap()).collect();
     for start in 0..numbers.len() - 1 {
@@ -16,10 +16,10 @@ pub fn part2(input: &[String]) {
         }
         if sum == target {
             let set = (&numbers[start..end + 1]).iter();
-            println!("{}", set.clone().min().unwrap() + set.max().unwrap());
-            break;
+            return set.clone().min().unwrap() + set.max().unwrap();
         }
     }
+    panic!()
 }
 
 fn target(input: &[String]) -> u64 {

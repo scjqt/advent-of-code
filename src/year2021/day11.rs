@@ -1,19 +1,19 @@
 use array2d::Array2D;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut cave = Cave::new(input);
     for _ in 0..100 {
         cave.step();
     }
-    println!("{}", cave.total_flashes);
+    cave.total_flashes
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut cave = Cave::new(input);
     while cave.step_flashes != 100 {
         cave.step();
     }
-    println!("{}", cave.step);
+    cave.step
 }
 
 struct Cave {

@@ -1,10 +1,10 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) {
-    println!("{}", flip(input).len());
+pub fn part1(input: &[String]) -> impl ToString {
+    flip(input).len()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut tiles = flip(input);
     let offsets = &[(1, 0), (-1, 0), (0, 1), (0, -1), (1, -1), (-1, 1)];
     for _ in 0..100 {
@@ -30,7 +30,7 @@ pub fn part2(input: &[String]) {
         }
         tiles = new;
     }
-    println!("{}", tiles.len());
+    tiles.len()
 }
 
 fn flip(input: &[String]) -> HashSet<(i32, i32)> {

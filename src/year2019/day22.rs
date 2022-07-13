@@ -1,14 +1,12 @@
-pub fn part1(input: &[String]) {
-    let x = shuffle(input, 10007).apply(2019, 10007);
-    println!("{}", x);
+pub fn part1(input: &[String]) -> impl ToString {
+    shuffle(input, 10007).apply(2019, 10007)
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     const N: u64 = 119315717514047;
-    let x = power(shuffle(input, N), 101741582076661, N)
+    power(shuffle(input, N), 101741582076661, N)
         .inv(N)
-        .apply(2020, N);
-    println!("{}", x);
+        .apply(2020, N)
 }
 
 fn shuffle(input: &[String], n: u64) -> Transform {

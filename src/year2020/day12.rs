@@ -1,18 +1,18 @@
 use ship::Ship;
 use Instruction::*;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut ship = Ship::new(1, 0);
     input.iter().for_each(|x| ship.update(from_string(x)));
-    println!("{}", ship.manhattan());
+    ship.manhattan()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut ship = Ship::new(10, 1);
     input
         .iter()
         .for_each(|x| ship.update_with_waypoint(from_string(x)));
-    println!("{}", ship.manhattan());
+    ship.manhattan()
 }
 
 pub enum Instruction {

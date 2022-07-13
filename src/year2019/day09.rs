@@ -1,17 +1,18 @@
 use super::intcode;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     computer.input(1);
     while let Some(value) = computer.output() {
-        println!("{}", value);
+        return value;
     }
+    panic!()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     computer.input(2);
-    println!("{}", computer.output().unwrap());
+    computer.output().unwrap()
 }

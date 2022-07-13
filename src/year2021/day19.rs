@@ -1,10 +1,10 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) {
-    println!("{}", collect(correlate_scanners(input).0).len());
+pub fn part1(input: &[String]) -> impl ToString {
+    collect(correlate_scanners(input).0).len()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let positions = correlate_scanners(input).1;
     let mut largest = 0;
     for &(x1, y1, z1) in &positions {
@@ -12,7 +12,7 @@ pub fn part2(input: &[String]) {
             largest = largest.max((x1 - x2).abs() + (y1 - y2).abs() + (z1 - z2).abs());
         }
     }
-    println!("{}", largest);
+    largest
 }
 
 fn correlate_scanners(input: &[String]) -> (Vec<Beacons>, Vec<(i32, i32, i32)>) {

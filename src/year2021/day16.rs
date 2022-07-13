@@ -1,11 +1,11 @@
 use packets::Packet;
 
-pub fn part1(input: &[String]) {
-    println!("{}", Packet::new(input).total_version());
+pub fn part1(input: &[String]) -> impl ToString {
+    Packet::new(input).total_version()
 }
 
-pub fn part2(input: &[String]) {
-    println!("{}", Packet::new(input).evaluate());
+pub fn part2(input: &[String]) -> impl ToString {
+    Packet::new(input).evaluate()
 }
 
 mod packets {

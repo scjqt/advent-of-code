@@ -87,8 +87,7 @@ fn expand(parts: Vec<(u8, u8)>) -> TokenStream {
         let part_ident = format_ident!("part{}", part);
         quote! {
             if (day, part) == (#day, #part) {
-                #day_ident::#part_ident(input);
-                return true;
+                return Some(#day_ident::#part_ident(input).to_string());
             }
         }
     });
@@ -121,16 +120,12 @@ pub fn years(item: TokenStream) -> TokenStream {
         let ident = format_ident!("year20{}", year);
         quote! {
             if year == #year {
-                if #ident::run(day, part, input) {
-                    implemented = true;
-                }
+                return #ident::run(day, part, input);
             }
         }
     });
-    quote! {{
-        let mut implemented = false;
+    quote! {
         #(#years)*
-        implemented
-    }}
+    }
     .into()
 }

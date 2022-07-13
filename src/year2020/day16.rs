@@ -1,7 +1,7 @@
 use field::Field;
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut i = 0;
     let fields = parse_fields(input, &mut i);
     i += 5;
@@ -21,10 +21,10 @@ pub fn part1(input: &[String]) {
         }
         i += 1;
     }
-    println!("{}", total);
+    total
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut i = 0;
     let fields = parse_fields(input, &mut i);
     let mut possibilities: HashMap<usize, Vec<usize>> = HashMap::new();
@@ -73,7 +73,7 @@ pub fn part2(input: &[String]) {
             product *= yours[i] as u64
         }
     });
-    println!("{}", product);
+    product
 }
 
 fn parse_fields(input: &[String], i: &mut usize) -> Vec<Field> {

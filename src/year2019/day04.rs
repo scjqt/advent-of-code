@@ -1,6 +1,6 @@
 use std::ops::RangeInclusive;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut total = 0;
     for number in range(&input[0]) {
         let string = number.to_string();
@@ -19,10 +19,10 @@ pub fn part1(input: &[String]) {
             total += 1;
         }
     }
-    println!("{}", total);
+    total
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut total = 0;
     for number in range(&input[0]) {
         let string = number.to_string();
@@ -54,7 +54,7 @@ pub fn part2(input: &[String]) {
             total += 1;
         }
     }
-    println!("{}", total);
+    total
 }
 
 fn range(input: &str) -> RangeInclusive<u32> {

@@ -1,20 +1,20 @@
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let orbits = orbits(input);
     let mut total = 0;
     for object in orbits.keys() {
         total += total_orbits(&orbits, object);
     }
-    println!("{}", total);
+    total
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let orbits = orbits(input);
     let you = full_path(&orbits, orbits["YOU"]);
     let san = full_path(&orbits, orbits["SAN"]);
     let min = you.len() + san.len() - you.intersection(&san).collect::<HashSet<_>>().len() * 2;
-    println!("{}", min);
+    min
 }
 
 fn total_orbits(orbits: &HashMap<&str, &str>, object: &str) -> usize {

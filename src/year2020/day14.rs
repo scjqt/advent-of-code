@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut memory: HashMap<u64, u64> = HashMap::new();
     let mut and: u64 = 0;
     let mut or: u64 = 0;
@@ -17,10 +17,10 @@ pub fn part1(input: &[String]) {
             memory.insert(address, (value & and) | or);
         }
     }
-    println!("{}", memory.values().sum::<u64>());
+    memory.values().sum::<u64>()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut memory: HashMap<u64, u64> = HashMap::new();
     let mut mask = "";
     for line in input {
@@ -31,7 +31,7 @@ pub fn part2(input: &[String]) {
             set_memory(&mut memory, mask, address, value);
         }
     }
-    println!("{}", memory.values().sum::<u64>());
+    memory.values().sum::<u64>()
 }
 
 fn decode(line: &str) -> (u64, u64) {

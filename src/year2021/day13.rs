@@ -1,14 +1,14 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut i = 0;
     let mut dots = parse(input, &mut i);
     i += 1;
     dots = fold(dots, &input[i]);
-    println!("{}", dots.len());
+    dots.len()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut i = 0;
     let mut dots = parse(input, &mut i);
     i += 1;
@@ -23,12 +23,16 @@ pub fn part2(input: &[String]) {
         max_y = max_y.max(y);
     }
 
+    let mut result = String::new();
     for y in 0..=max_y {
         for x in 0..=max_x {
-            print!("{}", if dots.contains(&(x, y)) { '#' } else { '.' });
+            result.push(if dots.contains(&(x, y)) { '#' } else { '.' });
         }
-        println!();
+        if y < max_y {
+            result.push('\n');
+        }
     }
+    result
 }
 
 fn fold(dots: HashSet<(i16, i16)>, line: &str) -> HashSet<(i16, i16)> {

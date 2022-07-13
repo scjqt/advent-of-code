@@ -1,19 +1,19 @@
 use life::Life;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut life = Life::new(input);
     for _ in 0..6 {
         life.update(false);
     }
-    println!("{}", life.active());
+    life.active()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut life = Life::new(input);
     for _ in 0..6 {
         life.update(true);
     }
-    println!("{}", life.active());
+    life.active()
 }
 
 mod life {

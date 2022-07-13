@@ -1,30 +1,24 @@
 use search::dijkstra;
 use Colour::*;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let (one, two) = parse(input);
-    println!(
-        "{}",
-        lowest_energy([
-            [A, A, two[0], one[0]],
-            [B, B, two[1], one[1]],
-            [C, C, two[2], one[2]],
-            [D, D, two[3], one[3]],
-        ])
-    );
+    lowest_energy([
+        [A, A, two[0], one[0]],
+        [B, B, two[1], one[1]],
+        [C, C, two[2], one[2]],
+        [D, D, two[3], one[3]],
+    ])
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let (one, four) = parse(input);
-    println!(
-        "{}",
-        lowest_energy([
-            [four[0], D, D, one[0]],
-            [four[1], B, C, one[1]],
-            [four[2], A, B, one[2]],
-            [four[3], C, A, one[3]],
-        ])
-    );
+    lowest_energy([
+        [four[0], D, D, one[0]],
+        [four[1], B, C, one[1]],
+        [four[2], A, B, one[2]],
+        [four[3], C, A, one[3]],
+    ])
 }
 
 fn parse(input: &[String]) -> ([Colour; 4], [Colour; 4]) {

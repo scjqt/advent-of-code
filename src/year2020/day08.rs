@@ -1,25 +1,25 @@
 use state::State;
 use Instruction::*;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let instructions: Vec<Instruction> = input.iter().map(|x| interpret(&x)).collect();
     let mut state = State::new();
     state.advance_until_end(&instructions, -1);
-    println!("{}", state.accumulator());
+    state.accumulator()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let instructions: Vec<Instruction> = input.iter().map(|x| interpret(&x)).collect();
     for i in 0..instructions.len() {
         if let Jmp(_) | Nop(_) = instructions[i] {
             let mut state = State::new();
             state.advance_until_end(&instructions, i as i32);
             if state.index() == instructions.len() as i32 {
-                println!("{}", state.accumulator());
-                break;
+                return state.accumulator();
             }
         }
     }
+    panic!()
 }
 
 pub enum Instruction {

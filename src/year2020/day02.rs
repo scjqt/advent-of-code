@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut total = 0;
     for line in input {
         let password = Password::from_str(line);
@@ -11,10 +11,10 @@ pub fn part1(input: &[String]) {
             total += 1;
         }
     }
-    println!("{}", total);
+    total
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut total = 0;
     for line in input {
         let password = Password::from_str(line);
@@ -24,7 +24,7 @@ pub fn part2(input: &[String]) {
             total += 1;
         }
     }
-    println!("{}", total);
+    total
 }
 
 struct Password {

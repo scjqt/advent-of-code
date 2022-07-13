@@ -1,14 +1,14 @@
 use snailfish::Number;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut number = Number::new(&input[0]);
     for n in input.iter().skip(1) {
         number = number + Number::new(n);
     }
-    println!("{}", number.magnitude());
+    number.magnitude()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let numbers: Vec<_> = input.iter().map(|line| Number::new(line)).collect();
     let mut largest = 0;
     for i in 0..numbers.len() {
@@ -18,7 +18,7 @@ pub fn part2(input: &[String]) {
             }
         }
     }
-    println!("{}", largest);
+    largest
 }
 
 mod snailfish {

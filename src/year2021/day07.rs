@@ -1,10 +1,10 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut crabs: Vec<u32> = parse(input);
     crabs.sort_unstable();
-    println!("{}", fuel_one(&crabs, crabs[(crabs.len() - 1) / 2]));
+    fuel_one(&crabs, crabs[(crabs.len() - 1) / 2])
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let crabs: Vec<u32> = parse(input);
     let (mut low, mut high) = (*crabs.iter().min().unwrap(), *crabs.iter().max().unwrap());
     loop {
@@ -15,8 +15,7 @@ pub fn part2(input: &[String]) {
         } else if fuel > fuel_two(&crabs, position + 1) {
             low = position;
         } else {
-            println!("{}", fuel);
-            break;
+            return fuel;
         }
     }
 }

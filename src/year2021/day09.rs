@@ -1,10 +1,10 @@
 use array2d::Array2D;
 
-pub fn part1(input: &[String]) {
-    println!("{}", get_low_points(input).0);
+pub fn part1(input: &[String]) -> impl ToString {
+    get_low_points(input).0
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let low_points = get_low_points(input).1;
 
     let mut highest = [0; 3];
@@ -22,7 +22,7 @@ pub fn part2(input: &[String]) {
         }
     }
 
-    println!("{}", highest[0] * highest[1] * highest[2]);
+    highest[0] * highest[1] * highest[2]
 }
 
 fn get_low_points(input: &[String]) -> (u16, Array2D<i32>) {

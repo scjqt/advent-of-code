@@ -2,12 +2,12 @@ use super::intcode;
 use std::collections::{HashMap, HashSet, VecDeque};
 use vector::Vector;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let (oxygen, distances) = map_area(&input[0]);
-    println!("{}", distances[&oxygen]);
+    distances[&oxygen]
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let (oxygen, distances) = map_area(&input[0]);
     let area: HashSet<Vector> = distances.keys().cloned().collect();
     let mut queue = VecDeque::new();
@@ -33,7 +33,7 @@ pub fn part2(input: &[String]) {
         }
     }
 
-    println!("{}", time);
+    time
 }
 
 fn map_area(input: &str) -> (Vector, HashMap<Vector, usize>) {

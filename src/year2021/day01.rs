@@ -1,15 +1,14 @@
-pub fn part1(input: &[String]) {
-    println!("{}", total(parse(input)));
+pub fn part1(input: &[String]) -> impl ToString {
+    total(parse(input))
 }
 
-pub fn part2(input: &[String]) {
-    let total = total(
+pub fn part2(input: &[String]) -> impl ToString {
+    total(
         parse(input)
             .windows(3)
             .map(|depths| depths.iter().sum())
             .collect(),
-    );
-    println!("{}", total);
+    )
 }
 
 fn parse(input: &[String]) -> Vec<u16> {

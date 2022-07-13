@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut fewest = usize::MAX;
     let mut result = 0;
     for i in 0..input[0].len() / (25 * 6) {
@@ -16,10 +16,10 @@ pub fn part1(input: &[String]) {
             result = ones * twos;
         }
     }
-    println!("{}", result);
+    result
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut image = Vec::new();
     image.resize_with(25 * 6, || '2');
     for i in 0..input[0].len() / (25 * 6) {
@@ -29,10 +29,14 @@ pub fn part2(input: &[String]) {
             }
         }
     }
+    let mut result = String::new();
     for y in 0..6 {
         for x in 0..25 {
-            print!("{}", if image[x + y * 25] == '1' { "■" } else { " " });
+            result.push(if image[x + y * 25] == '1' { '#' } else { ' ' });
         }
-        println!();
+        if y < 5 {
+            result.push('\n');
+        }
     }
+    result
 }

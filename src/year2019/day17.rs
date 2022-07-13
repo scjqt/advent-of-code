@@ -2,7 +2,7 @@ use super::intcode;
 use array2d::Array2D;
 use vector::Vector;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let view = parse_input(&input[0]);
     let mut total = 0;
     for y in 1..view.height() - 1 {
@@ -17,10 +17,10 @@ pub fn part1(input: &[String]) {
             }
         }
     }
-    println!("{}", total);
+    total
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut main_routine = get_instructions(parse_input(&input[0]));
 
     let functions = vec![
@@ -71,7 +71,7 @@ pub fn part2(input: &[String]) {
     while let Some(output) = computer.output() {
         dust = output;
     }
-    println!("{}", dust);
+    dust
 }
 
 fn parse_input(input: &str) -> Array2D<char> {

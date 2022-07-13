@@ -1,23 +1,21 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) {
-    println!(
-        "{}",
-        input
-            .iter()
-            .map(|line| line
-                .split(" | ")
+pub fn part1(input: &[String]) -> impl ToString {
+    input
+        .iter()
+        .map(|line| {
+            line.split(" | ")
                 .nth(1)
                 .unwrap()
                 .split(' ')
                 .map(|d| d.len())
                 .filter(|&c| c != 5 && c != 6)
-                .count())
-            .sum::<usize>()
-    );
+                .count()
+        })
+        .sum::<usize>()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut lookup: HashMap<u8, &str> = HashMap::new();
     lookup.insert(0b1110111, "0");
     lookup.insert(0b0010010, "1");
@@ -75,5 +73,5 @@ pub fn part2(input: &[String]) {
         }
         total += &value.parse().unwrap();
     }
-    println!("{}", total);
+    total
 }

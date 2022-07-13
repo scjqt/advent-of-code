@@ -1,7 +1,7 @@
 use super::intcode;
 use std::io;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     while computer.state() != intcode::State::Halted {
@@ -17,4 +17,5 @@ pub fn part1(input: &[String]) {
             computer.input(10);
         }
     }
+    "Finished."
 }

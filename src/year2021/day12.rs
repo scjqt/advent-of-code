@@ -1,11 +1,11 @@
 use map::Map;
 
-pub fn part1(input: &[String]) {
-    println!("{}", Map::new(input).count(false));
+pub fn part1(input: &[String]) -> impl ToString {
+    Map::new(input).count(false)
 }
 
-pub fn part2(input: &[String]) {
-    println!("{}", Map::new(input).count(true));
+pub fn part2(input: &[String]) -> impl ToString {
+    Map::new(input).count(true)
 }
 
 mod map {

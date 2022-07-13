@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut error_score = 0;
 
     for line in input {
@@ -18,10 +18,10 @@ pub fn part1(input: &[String]) {
         }
     }
 
-    println!("{}", error_score);
+    error_score
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut completion_scores = Vec::new();
 
     'outer: for line in input {
@@ -48,7 +48,7 @@ pub fn part2(input: &[String]) {
     }
 
     completion_scores.sort_unstable();
-    println!("{}", completion_scores[completion_scores.len() / 2]);
+    completion_scores[completion_scores.len() / 2]
 }
 
 struct Character {

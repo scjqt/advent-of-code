@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let (mut position, mut depth) = (0, 0);
     for (direction, distance) in parse(input).into_iter() {
         match direction {
@@ -8,10 +8,10 @@ pub fn part1(input: &[String]) {
             _ => panic!(),
         }
     }
-    println!("{}", position * depth);
+    position * depth
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let (mut position, mut depth, mut aim) = (0, 0, 0);
     for (direction, distance) in parse(input).into_iter() {
         match direction {
@@ -24,7 +24,7 @@ pub fn part2(input: &[String]) {
             _ => panic!(),
         }
     }
-    println!("{}", position * depth);
+    position * depth
 }
 
 fn parse(input: &[String]) -> Vec<(&str, i32)> {

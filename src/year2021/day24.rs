@@ -1,21 +1,21 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let relationships = relationships(input);
     let mut number = [0; 14];
     for (i, j, o) in relationships {
         number[i] = 9.min(9 - o);
         number[j] = number[i] + o;
     }
-    display(number);
+    to_string(number)
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let relationships = relationships(input);
     let mut number = [0; 14];
     for (i, j, o) in relationships {
         number[i] = 1.max(1 - o);
         number[j] = number[i] + o;
     }
-    display(number);
+    to_string(number)
 }
 
 fn relationships(input: &[String]) -> Vec<(usize, usize, i8)> {
@@ -44,12 +44,9 @@ fn parse(line: &str) -> i8 {
     line.split_whitespace().last().unwrap().parse().unwrap()
 }
 
-fn display(number: [i8; 14]) {
-    println!(
-        "{}",
-        number
-            .into_iter()
-            .map(|d| d.to_string())
-            .collect::<String>()
-    );
+fn to_string(number: [i8; 14]) -> String {
+    number
+        .into_iter()
+        .map(|d| d.to_string())
+        .collect::<String>()
 }

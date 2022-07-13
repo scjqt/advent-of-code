@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut total = 0;
     let mut group = HashSet::new();
     for line in input {
@@ -12,10 +12,10 @@ pub fn part1(input: &[String]) {
         }
     }
     total += group.len();
-    println!("{}", total);
+    total
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut total = 0;
     let mut group = HashSet::new();
     let mut new = true;
@@ -34,7 +34,7 @@ pub fn part2(input: &[String]) {
         }
     }
     total += group.len();
-    println!("{}", total);
+    total
 }
 
 fn parse(line: &str) -> HashSet<char> {

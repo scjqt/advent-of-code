@@ -1,4 +1,4 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let numbers = interpret(input);
     let mut ones = 0;
     let mut threes = 0;
@@ -9,10 +9,10 @@ pub fn part1(input: &[String]) {
             _ => (),
         }
     }
-    println!("{}", ones * threes);
+    ones * threes
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let numbers = interpret(input);
     let mut total: u64 = 1;
     let mut consecutive = 1;
@@ -24,7 +24,7 @@ pub fn part2(input: &[String]) {
             consecutive += 1;
         }
     }
-    println!("{}", total);
+    total
 }
 
 fn f(n: i8) -> u64 {

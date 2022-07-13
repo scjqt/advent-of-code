@@ -1,10 +1,10 @@
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let subject: u64 = input[0].parse().unwrap();
     let mut n = 1;
     for _ in 0..loop_size(input[1].parse().unwrap()) {
         n = (n * subject) % 20201227;
     }
-    println!("{}", n);
+    n
 }
 
 fn loop_size(key: u64) -> u64 {

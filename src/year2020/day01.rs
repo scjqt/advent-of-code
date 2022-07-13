@@ -1,19 +1,20 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     if let Some(product) = find_pair(&parse(input), 2020) {
-        println!("{}", product);
+        return product;
     }
+    panic!()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let values = parse(input);
     for (i, &value) in values.iter().enumerate() {
         if let Some(product) = find_pair(&values[i + 1..], 2020 - value) {
-            println!("{}", product * value);
-            break;
+            return product * value;
         }
     }
+    panic!()
 }
 
 fn parse(input: &[String]) -> Vec<i32> {

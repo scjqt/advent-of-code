@@ -2,7 +2,7 @@ use array2d::Array2D;
 use search::{bft, dijkstra};
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let (map, start, keys, ids) = parse(input);
     let goal = dijkstra(
         Vault::new(vec![start], &keys),
@@ -12,10 +12,10 @@ pub fn part1(input: &[String]) {
     )
     .find(|v| v.complete(keys.len()))
     .unwrap();
-    println!("{}", goal.steps);
+    goal.steps
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     const WALL_OFFSETS: [(isize, isize); 5] = [(0, 0), (1, 0), (0, 1), (-1, 0), (0, -1)];
     const POS_OFFSETS: [(isize, isize); 4] = [(1, 1), (-1, 1), (-1, -1), (1, -1)];
     let (mut map, start, keys, ids) = parse(input);
@@ -35,7 +35,7 @@ pub fn part2(input: &[String]) {
     )
     .find(|v| v.complete(keys.len()))
     .unwrap();
-    println!("{}", goal.steps);
+    goal.steps
 }
 
 fn parse(

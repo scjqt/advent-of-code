@@ -1,11 +1,11 @@
 use std::{collections::HashMap, str::Split};
 
-pub fn part1(input: &[String]) {
-    solve(input, false);
+pub fn part1(input: &[String]) -> impl ToString {
+    solve(input, false)
 }
 
-pub fn part2(input: &[String]) {
-    solve(input, true);
+pub fn part2(input: &[String]) -> impl ToString {
+    solve(input, true)
 }
 
 fn parse(line: &str) -> ((i16, i16), (i16, i16)) {
@@ -22,7 +22,7 @@ fn parse_coords(mut coords: Split<char>) -> (i16, i16) {
     )
 }
 
-fn solve(input: &[String], part: bool) {
+fn solve(input: &[String], part: bool) -> usize {
     let mut vents = HashMap::new();
     for vent in input {
         let ((x1, y1), (x2, y2)) = parse(vent);
@@ -38,10 +38,7 @@ fn solve(input: &[String], part: bool) {
             }
         }
     }
-    println!(
-        "{}",
-        vents.values().filter(|overlaps| **overlaps > 1).count()
-    );
+    vents.values().filter(|overlaps| **overlaps > 1).count()
 }
 
 fn direction(v1: i16, v2: i16) -> i16 {

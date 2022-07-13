@@ -1,15 +1,15 @@
 use super::intcode;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let instructions = ["OR D J", "OR A T", "AND C T", "NOT T T", "AND T J", "WALK"];
-    println!("{}", springbot(input, &instructions));
+    springbot(input, &instructions)
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let instructions = [
         "OR E J", "OR H J", "AND D J", "OR A T", "AND C T", "AND B T", "NOT T T", "AND T J", "RUN",
     ];
-    println!("{}", springbot(input, &instructions));
+    springbot(input, &instructions)
 }
 
 fn springbot(input: &[String], instructions: &[&str]) -> i64 {

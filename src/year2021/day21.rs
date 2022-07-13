@@ -1,27 +1,25 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut one = DeterministicPlayer::new(&input[0], 6);
     let mut two = DeterministicPlayer::new(&input[1], 5);
     let mut rolls = 0;
-    println!(
-        "{}",
-        loop {
-            one.update();
-            rolls += 3;
-            if one.score >= 1000 {
-                break two.score;
-            }
-            two.update();
-            rolls += 3;
-            if two.score >= 1000 {
-                break one.score;
-            }
-        } * rolls
-    );
+    let result = loop {
+        one.update();
+        rolls += 3;
+        if one.score >= 1000 {
+            break two.score;
+        }
+        two.update();
+        rolls += 3;
+        if two.score >= 1000 {
+            break one.score;
+        }
+    } * rolls;
+    result
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let one = Player::new(&input[0]);
     let two = Player::new(&input[1]);
     let mut success_one = HashMap::new();
@@ -40,7 +38,7 @@ pub fn part2(input: &[String]) {
         wins_two += universes * failure_one.get(turns).unwrap_or(&0);
     }
 
-    println!("{}", wins_one.max(wins_two));
+    wins_one.max(wins_two)
 }
 
 struct DeterministicPlayer {

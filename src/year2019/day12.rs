@@ -1,17 +1,17 @@
 use moons::Moons;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut moons = Moons::new(input);
     moons.step_all(1000);
-    println!("{}", moons.total_energy());
+    moons.total_energy()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut moons = Moons::new(input);
     let x = moons.step_until_repeat(0);
     let y = moons.step_until_repeat(1);
     let z = moons.step_until_repeat(2);
-    println!("{}", lcm(x, lcm(y, z)));
+    lcm(x, lcm(y, z))
 }
 
 fn gcd(mut a: usize, mut b: usize) -> usize {

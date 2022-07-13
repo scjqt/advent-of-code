@@ -1,19 +1,19 @@
 use polymer::Polymer;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut polymer = Polymer::new(input);
     for _ in 0..10 {
         polymer.step();
     }
-    println!("{}", polymer.result());
+    polymer.result()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut polymer = Polymer::new(input);
     for _ in 0..40 {
         polymer.step();
     }
-    println!("{}", polymer.result());
+    polymer.result()
 }
 
 mod polymer {

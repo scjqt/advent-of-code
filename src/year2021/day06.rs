@@ -1,11 +1,11 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) {
-    simulate(input, 80);
+pub fn part1(input: &[String]) -> impl ToString {
+    simulate(input, 80)
 }
 
-pub fn part2(input: &[String]) {
-    simulate(input, 256);
+pub fn part2(input: &[String]) -> impl ToString {
+    simulate(input, 256)
 }
 
 fn parse(input: &[String]) -> [u64; 6] {
@@ -16,14 +16,12 @@ fn parse(input: &[String]) -> [u64; 6] {
     frequencies
 }
 
-fn simulate(input: &[String], days: u16) {
+fn simulate(input: &[String], days: u16) -> u64 {
     let frequencies = parse(input);
-    println!(
-        "{}",
-        (0..6)
-            .map(|age| frequencies[age as usize] * fish(days + 6 - age, &mut HashMap::new()))
-            .sum::<u64>()
-    );
+
+    (0..6)
+        .map(|age| frequencies[age as usize] * fish(days + 6 - age, &mut HashMap::new()))
+        .sum()
 }
 
 fn fish(days: u16, cache: &mut HashMap<u16, u64>) -> u64 {

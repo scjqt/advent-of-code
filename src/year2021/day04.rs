@@ -1,18 +1,18 @@
 use board::Board;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let (numbers, mut boards) = parse(input);
     for &number in &numbers {
         for board in boards.iter_mut() {
             if let Some(score) = board.mark(number) {
-                println!("{}", score);
-                return;
+                return score;
             }
         }
     }
+    panic!()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let (numbers, mut boards) = parse(input);
     let mut last = 0;
     for &number in &numbers {
@@ -22,7 +22,7 @@ pub fn part2(input: &[String]) {
             }
         }
     }
-    println!("{}", last);
+    last
 }
 
 fn parse(input: &[String]) -> (Vec<u32>, Vec<Board>) {
@@ -32,7 +32,6 @@ fn parse(input: &[String]) -> (Vec<u32>, Vec<Board>) {
         boards.push(Board::new(&input[i..i + 5]));
         i += 6;
     }
-
     (
         input[0]
             .split(',')

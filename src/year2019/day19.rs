@@ -1,6 +1,6 @@
 use super::intcode;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     let mut total = 0;
@@ -11,23 +11,22 @@ pub fn part1(input: &[String]) {
             }
         }
     }
-    println!("{}", total);
+    total
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut computer = intcode::Computer::new(&input[0]).unwrap();
     computer.run();
     let mut start_x = 0;
     let mut y = 0;
-    'outer: loop {
+    loop {
         while !affected(&computer, start_x, y) {
             start_x += 1;
         }
         let mut x = start_x;
         while affected(&computer, x + 99, y) {
             if affected(&computer, x, y + 99) {
-                println!("{}", x * 10000 + y);
-                break 'outer;
+                return x * 10000 + y;
             }
             x += 1;
         }

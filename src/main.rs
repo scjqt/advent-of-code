@@ -57,11 +57,18 @@ fn run() -> Option<()> {
 fn run_part(year: u8, day: u8, part: u8, input: &[String]) {
     println!("part {}:", part);
     let start = Instant::now();
-    if years!(19..=22) {
-        println!("({}ms)", start.elapsed().as_nanos() as f64 / 1_000_000f64);
+    if let Some(result) = run_helper(year, day, part, input) {
+        let elapsed = start.elapsed().as_nanos() as f64 / 1_000_000.;
+        println!("{}", result);
+        println!("({}ms)", elapsed);
     } else {
         println!("not yet implemented");
     }
+}
+
+fn run_helper(year: u8, day: u8, part: u8, input: &[String]) -> Option<String> {
+    years!(19..=22);
+    None
 }
 
 fn title(year: u8, day: u8) {

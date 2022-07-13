@@ -1,11 +1,11 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let reactions = parse_input(input);
-    println!("{}", ore_cost_root("FUEL", 1, &reactions));
+    ore_cost_root("FUEL", 1, &reactions)
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let reactions = parse_input(input);
     let mut fuel = 1;
     let mut last = 0;
@@ -13,7 +13,7 @@ pub fn part2(input: &[String]) {
         last = fuel;
         fuel = fuel * 1000000000000 / ore_cost_root("FUEL", fuel, &reactions);
     }
-    println!("{}", fuel);
+    fuel
 }
 
 fn ore_cost_root(

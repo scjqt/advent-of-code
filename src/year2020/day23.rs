@@ -1,6 +1,6 @@
 use game::Game;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let mut game = Game::new(
         input[0]
             .chars()
@@ -10,10 +10,10 @@ pub fn part1(input: &[String]) {
     for _ in 0..100 {
         game.update(3);
     }
-    println!("{}", game.result_one());
+    game.result_one()
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut values: Vec<usize> = input[0]
         .chars()
         .map(|x| x.to_string().parse().unwrap())
@@ -25,7 +25,7 @@ pub fn part2(input: &[String]) {
     for _ in 0..10000000 {
         game.update(3);
     }
-    println!("{}", game.result_two());
+    game.result_two()
 }
 
 mod game {

@@ -1,11 +1,11 @@
 use std::collections::HashSet;
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let y = Area::new(input).y.0.abs();
-    println!("{}", y * (y - 1) / 2);
+    y * (y - 1) / 2
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let area = Area::new(input);
     let mut velocities = HashSet::new();
 
@@ -20,7 +20,7 @@ pub fn part2(input: &[String]) {
         }
     }
 
-    println!("{}", velocities.len());
+    velocities.len()
 }
 
 fn valid_x(mut vel: i32, area: &Area, steps: u32) -> bool {

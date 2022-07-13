@@ -1,17 +1,17 @@
 use asteroids::{Asteroid, AsteroidOrd};
 use std::collections::{HashMap, HashSet};
 
-pub fn part1(input: &[String]) {
+pub fn part1(input: &[String]) -> impl ToString {
     let map = parse_input(input);
-    println!("{}", best(&map).0);
+    best(&map).0
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let mut map = parse_input(input);
     let station = best(&map).1;
     map.remove(map.iter().position(|&x| x == station).unwrap());
     let result = asteroids_ordered(&map, station)[199].position();
-    println!("{}", result.1 * 100 + result.0);
+    result.1 * 100 + result.0
 }
 
 fn parse_input(input: &[String]) -> Vec<(i32, i32)> {

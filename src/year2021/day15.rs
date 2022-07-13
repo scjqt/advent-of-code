@@ -1,24 +1,23 @@
 use array2d::Array2D;
 use search::dijkstra;
 
-pub fn part1(input: &[String]) {
-    println!("{}", lowest_total_risk(parse(input)));
+pub fn part1(input: &[String]) -> impl ToString {
+    lowest_total_risk(parse(input))
 }
 
-pub fn part2(input: &[String]) {
+pub fn part2(input: &[String]) -> impl ToString {
     let levels = parse(input);
-    println!(
-        "{}",
-        lowest_total_risk(Array2D::from_fn(
-            levels.width() * 5,
-            levels.height() * 5,
-            |(x, y)| (levels[[x % levels.width(), y % levels.height()]] - 1
+    lowest_total_risk(Array2D::from_fn(
+        levels.width() * 5,
+        levels.height() * 5,
+        |(x, y)| {
+            (levels[[x % levels.width(), y % levels.height()]] - 1
                 + (x / levels.width()) as u8
                 + (y / levels.height()) as u8)
                 % 9
                 + 1
-        ))
-    );
+        },
+    ))
 }
 
 fn lowest_total_risk(levels: Array2D<u8>) -> u16 {
