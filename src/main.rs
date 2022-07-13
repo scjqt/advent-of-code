@@ -21,7 +21,7 @@ fn main() {
 fn run() -> Option<()> {
     let mut args = env::args();
     let mut arg = args.nth(1)?;
-    let test = arg == "test".to_string();
+    let test = &arg == "test";
     if test {
         arg = args.next()?;
     }
