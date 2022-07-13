@@ -1,83 +1,80 @@
 pub fn part1(input: &[String]) {
-    println!("{}", input.iter().map(|x| evaluate(x)).sum::<u64>());
+    println!("{}", input.iter().map(eval_one).sum::<u64>());
 }
 
 pub fn part2(input: &[String]) {
-    let sum: u64 = input.iter().map(|x| evaluate(&fix_precedence(x))).sum();
-    println!("{}", sum);
+    println!("{}", input.iter().map(eval_two).sum::<u64>());
 }
 
-fn evaluate(expression: &str) -> u64 {
-    if expression.len() == 1 {
-        expression[0..1].parse().unwrap()
-    } else {
-        let mut i = expression.len() - 1;
-        let value = if &expression[i..=i] == ")" {
-            let mut count = 1;
-            while count > 0 {
-                i -= 1;
-                match &expression[i..=i] {
-                    ")" => count += 1,
-                    "(" => count -= 1,
-                    _ => (),
-                }
-            }
-            evaluate(&expression[i + 1..expression.len() - 1])
-        } else {
-            evaluate(&expression[i..=i])
-        };
-        if i == 0 {
-            value
-        } else {
-            i -= 2;
-            match &expression[i..=i] {
-                "+" => evaluate(&expression[..i - 1]) + value,
-                "*" => evaluate(&expression[..i - 1]) * value,
-                _ => panic!(),
-            }
-        }
-    }
-}
-
-fn fix_precedence(expression: &str) -> String {
-    let mut chars: Vec<char> = expression.chars().collect();
+fn eval_one(expr: &String) -> u64 {
+    let mut acc = vec![(0, false)];
     let mut i = 0;
-    while i < chars.len() {
-        if chars[i] == '+' {
-            if chars[i + 2] == '(' {
-                let mut j = i + 2;
-                let mut count = 1;
-                while count > 0 {
-                    j += 1;
-                    match chars[j] {
-                        '(' => count += 1,
-                        ')' => count -= 1,
-                        _ => (),
-                    }
-                }
-                chars.insert(j + 1, ')');
-            } else {
-                chars.insert(i + 3, ')');
+    for c in expr.chars() {
+        match c {
+            '(' => {
+                acc.push((0, false));
+                i += 1;
             }
-
-            if chars[i - 2] == ')' {
-                let mut j = i - 2;
-                let mut count = 1;
-                while count > 0 {
-                    j -= 1;
-                    match chars[j] {
-                        ')' => count += 1,
-                        '(' => count -= 1,
-                        _ => (),
-                    }
+            ')' => {
+                match acc[i - 1].1 {
+                    false => acc[i - 1].0 += acc[i].0,
+                    true => acc[i - 1].0 *= acc[i].0,
                 }
-                chars.insert(j, '(');
-            } else {
-                chars.insert(i - 2, '(');
+                acc.pop();
+                i -= 1;
             }
-            i += 1;
+            '+' => acc[i].1 = false,
+            '*' => acc[i].1 = true,
+            ' ' => (),
+            n => {
+                let value = n.to_digit(10).unwrap() as u64;
+                match acc[i].1 {
+                    false => acc[i].0 += value,
+                    true => acc[i].0 *= value,
+                }
+            }
         }
-        i += 1;
     }
-    chars.into_iter().collect()
+    acc[0].0
+}
+
+fn eval_two(expr: &String) -> u64 {
+    let mut acc = vec![(0, false)];
+    let mut i = 0;
+    for c in expr.chars() {
+        match c {
+            '(' => {
+                acc.push((0, false));
+                i += 1;
+            }
+            ')' => {
+                if acc[i].1 {
+                    acc[i - 1].0 *= acc[i].0;
+                    acc.pop();
+                    i -= 1;
+                }
+                acc[i - 1].0 += acc[i].0;
+                acc.pop();
+                i -= 1;
+            }
+            '*' => {
+                if acc[i].1 {
+                    acc[i - 1].0 *= acc[i].0;
+                    acc[i].0 = 0;
+                } else {
+                    acc.push((0, true));
+                    i += 1;
+                }
+            }
+            '+' | ' ' => (),
+            n => {
+                acc[i].0 += n.to_digit(10).unwrap() as u64;
+            }
+        }
+    }
+    if acc[i].1 {
+        acc[0].0 * acc[1].0
+    } else {
+        acc[0].0
+    }
 }
